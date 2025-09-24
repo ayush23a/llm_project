@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalised Agent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+New&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div> <!-- Top Section -->
+                <div class="sidebar-header">
+                    <h2>Chat History</h2>
+                    <button id="newChatBtn" title="New Chat">+</button>
+                </div>
+                <div id="chatHistory">
+                    <!-- Chat history items will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div> <!-- Bottom Section -->
+                <div class="profile-container">
+                    <div id="profilePopover" class="profile-popover">
+                        <p id="popoverUserName">Ayush Aman</p>
+                        <button class="popover-button">See profile</button>
+                        <button id="SignOut" class="popover-button">Sign out</button>
+                    </div>
+                    <div id="profileIcon" class="profile-icon-wrapper">
+                        <div class="icon" id="profileInitials">AA</div>
+                        <span id="profileUserName">Ayush Aman</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sidebar Toggle Button -->
+        <div id="sidebarToggle" title="Toggle Sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+
+        <main class="main-content">
+            
+            <header id="chatHeader" class="header">
+                <div class="title-container">
+                    <h1 id="welcomeMessage">Welcome, User!</h1>
+                </div>
+            </header>
+            
+            <!-- Chat Messages Area -->
+            <div id="chatArea" class="chat-area">
+                <!-- Chat messages will be dynamically added here -->
+            </div>
+            
+            <!-- Chat Input Form -->
+            <div class="chat-input-container">
+                <div id="attachPopover" class="attach-popover">
+                    <div class="attach-popover-item">Documents</div>
+                    <div class="attach-popover-item">Images</div>
+                    <div class="attach-popover-item">Other Files</div>
+                </div>
+                <form id="chatForm" class="chat-input-form">
+                    <button type="button" id="attachBtn" class="attach-btn" title="Attach file">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+                    </button>
+                    <input type="text" id="chatInput" class="chat-input" placeholder="How can I help you?" autocomplete="off">
+                    <button type="submit" class="send-button">Send</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Custom Modal -->
+    <div id="customModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3 id="modalTitle">Modal Title</h3>
+            <div id="modalBody">
+                <!-- Content will be injected here -->
+            </div>
+            <div class="modal-footer">
+                <button id="modalCancelBtn" class="modal-btn modal-btn-secondary">Cancel</button>
+                <button id="modalConfirmBtn" class="modal-btn modal-btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
+
+
