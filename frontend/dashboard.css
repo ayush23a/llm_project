@@ -394,6 +394,27 @@
         .attach-popover-item:hover {
             background-color: #3a3a3a;
         }
+
+        /* Styling for the LLM Model Selection Dropdown */
+        .llm-model-select {
+            background-color: var(--bg-dark-element);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .llm-model-select:focus {
+            outline: none;
+            border-color: #4a4a4a;
+        }
+
+        .llm-model-select:hover {
+            background-color: #3a3a3a;
+        }
         
         /* Custom Modal Styles */
         .modal-overlay {

@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const modalBody = document.getElementById('modalBody');
             const modalConfirmBtn = document.getElementById('modalConfirmBtn');
             const modalCancelBtn = document.getElementById('modalCancelBtn');
+            const llmModelSelect = document.getElementById('llmModelSelect');
 
             // --- User & State Management ---
             // In a real app, you'd get this from localStorage after login
@@ -301,6 +302,22 @@ document.addEventListener('DOMContentLoaded', function() {
             customModal.addEventListener('click', (e) => {
                 if (e.target === customModal) {
                     hideModal();
+                }
+            });
+            
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const userInput = chatInput.value.trim();
+                const selectedModel = llmModelSelect.value; // Get the selected LLM model
+
+                if (userInput && currentSessionId) {
+                    addMessageToCurrentSession('user', userInput);
+
+                    // Log the selected model and user input (for debugging or backend integration)
+                    console.log(`Selected Model: ${selectedModel}, User Input: ${userInput}`);
+
+                    chatInput.value = '';
+                    simulateAssistantResponse(userInput); // Simulate response (you can modify this to use the selected model)
                 }
             });
 
