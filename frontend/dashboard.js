@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             function simulateAssistantResponse(userInput) {
                 setTimeout(() => {
-                    const response = `You said: "${userInput}". I'm a helpful assistant ready to assist you.`;
+                    const response = `Sorry to say that --> Backend not started!!!`;
                     addMessageToCurrentSession('assistant', response);
                 }, 1000); 
             }
@@ -305,6 +305,61 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
+            const API_BASE_URL = 'http://localhost:8000'; 
+            
+            function getModelRoute(modelValue) {
+                switch (modelValue) {
+                    case 'gemini':
+                        return '/gemini_chat/invoke'; 
+                    case 'llama':
+                        return '/llama_chat/invoke'; 
+                    case 'gemma':
+                        return '/gemma_chat/invoke';
+                    default:
+                        // Fallback or error handling
+                        console.error(`Unknown model selected: ${modelValue}`);
+                        return '/gemini-chat/invoke'; 
+                }
+            }
+            
+            async function fetchAssistantResponse(userInput, selectedModel) {
+                const routePath = getModelRoute(selectedModel);
+                const fullUrl = API_BASE_URL + routePath;
+                
+                try {
+                    // Start simulation response immediately for a better UX
+                    const loadingMessageId = addLoadingMessage(); // Hypothetical function to show '...'
+
+                    const response = await fetch(fullUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        // LangServe routes for 'invoke' expect an 'input' object
+                        body: JSON.stringify({ input: { questions: userInput } }),
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const jsonResponse = await response.json();
+                    
+                    // The result from StrOutputParser in LangServe is typically under 'output'
+                    const assistantContent = jsonResponse.output; 
+
+                    // Remove loading message and add actual message
+                    // (You would need to implement this logic)
+                    // removeMessageFromDOM(loadingMessageId); 
+                    addMessageToCurrentSession('assistant', assistantContent);
+
+                } catch (error) {
+                    console.error('Error fetching assistant response:', error);
+                    // Handle API failure
+                    addMessageToCurrentSession('assistant', "Oops! Ran into an issue talking to the model. Try again?");
+                }
+            }
+
             chatForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 const userInput = chatInput.value.trim();
@@ -313,15 +368,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (userInput && currentSessionId) {
                     addMessageToCurrentSession('user', userInput);
 
-                    // Log the selected model and user input (for debugging or backend integration)
+                    // --- REPLACE simulateAssistantResponse with dynamic fetch ---
+                    // Log the selected model and user input 
                     console.log(`Selected Model: ${selectedModel}, User Input: ${userInput}`);
-
+                    
                     chatInput.value = '';
-                    simulateAssistantResponse(userInput); // Simulate response (you can modify this to use the selected model)
+                    // Call the new async function
+                    fetchAssistantResponse(userInput, selectedModel);
+                    // --------------------------------------------------------
                 }
             });
 
-
+            chatInput.focus();
             // --- Initial Setup ---
             setupUser();
             createNewSession();

@@ -6,12 +6,15 @@ from langserve import add_routes
 from dotenv import load_dotenv
 import os
 from fastapi import FastAPI
-
-
+from pydantic import BaseModel
+import uvicorn
 
 
 load_dotenv()
-os.environ["GEMINI_API_KEY"] = os.getenv("GEMINI_API_KEY")
+print("Loaded GOOGLE_API_KEY =", os.getenv("GOOGLE_API_KEY"))
+os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = ""  # Prevent ADC fallback
+os.environ["GOOGLE_AUTH_DISABLE_SSL_CERTIFICATE_CHECKS"] = "1" 
 
 # Fastapi Setup
 app = FastAPI(
@@ -20,11 +23,13 @@ app = FastAPI(
     version="1.0.0",
 )
 
+class QuestionInput(BaseModel):
+    questions: str
 
 # Set up LLMs
-model = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.8)
-llm1 = Ollama(model='llama3.2:1b', temperature= 0.8)
-llm2 = Ollama(model='gemma2:2b', temperature= 0.8)
+model_gemini = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0.8)
+llm_llama = Ollama(model='llama3.2:1b', temperature= 0.8)
+llm_gemma = Ollama(model='gemma2:2b', temperature= 0.8)
 
 # Define the prompt templates
 prompt = ChatPromptTemplate.from_messages([ 
@@ -37,10 +42,26 @@ prompt = ChatPromptTemplate.from_messages([
 
 #add routes for the LLMs
 # issue : have to add routes as per the model selected from frontend
+
 add_routes(
     app,
-    prompt | llm2 | StrOutputParser(),
-    path="/chat",
+    prompt | model_gemini | StrOutputParser(),
+    path="/gemini_chat",
     input_type=QuestionInput
 )
+
+add_routes(
+    app,
+    prompt | llm_llama | StrOutputParser(),
+    path="/llama_chat",
+    input_type=QuestionInput
+)
+
+add_routes(
+    app,
+    prompt | llm_gemma | StrOutputParser(),
+    path="/gemma_chat",
+    input_type=QuestionInput
+)
+
 

@@ -1,4 +1,4 @@
-streamlit
+#streamlit
 fastapi
 uvicorn
 langchain
@@ -8,3 +8,4 @@ langserve
 google-generativeai
 langchain_community
 sse_starlette
+langchain-google-genai
