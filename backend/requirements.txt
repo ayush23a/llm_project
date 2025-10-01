@@ -1,7 +1,6 @@
-#streamlit
 fastapi
 uvicorn
-langchain
+langchain-core
 langchain-ollama
 python-dotenv
 langserve

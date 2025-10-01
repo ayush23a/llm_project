@@ -8,13 +8,14 @@ import os
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
-
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 print("Loaded GOOGLE_API_KEY =", os.getenv("GOOGLE_API_KEY"))
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = ""  # Prevent ADC fallback
-os.environ["GOOGLE_AUTH_DISABLE_SSL_CERTIFICATE_CHECKS"] = "1" 
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = ""  # Prevent ADC fallback
+# os.environ["GOOGLE_AUTH_DISABLE_SSL_CERTIFICATE_CHECKS"] = "1" 
+
 
 # Fastapi Setup
 app = FastAPI(
@@ -22,6 +23,17 @@ app = FastAPI(
     description="An API for interacting with multiple LLMs using LangServe",
     version="1.0.0",
 )
+
+
+# CORS Setup
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 class QuestionInput(BaseModel):
     questions: str
