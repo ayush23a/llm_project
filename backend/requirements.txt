@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-langchain-core
+langchain
 langchain-ollama
 python-dotenv
 langserve

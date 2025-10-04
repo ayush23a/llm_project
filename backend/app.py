@@ -11,10 +11,7 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
-print("Loaded GOOGLE_API_KEY =", os.getenv("GOOGLE_API_KEY"))
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = ""  # Prevent ADC fallback
-# os.environ["GOOGLE_AUTH_DISABLE_SSL_CERTIFICATE_CHECKS"] = "1" 
 
 
 # Fastapi Setup
@@ -38,22 +35,38 @@ app.add_middleware(
 class QuestionInput(BaseModel):
     questions: str
 
+
+
+@app.get("/", tags=["Health Check"])
+def read_root():
+    return {"message": "Welcome to the LLM API. Visit /docs for API documentation."}
+
+
 # Set up LLMs
-model_gemini = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0.8)
+model_gemini = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.8)
 llm_llama = Ollama(model='llama3.2:1b', temperature= 0.8)
 llm_gemma = Ollama(model='gemma2:2b', temperature= 0.8)
 
 # Define the prompt templates
-prompt = ChatPromptTemplate.from_messages([ 
-
-    ("system", '''You are a helpul assistant. Your nature and tone is cool intelligent agent. you will communicate like a chill person. 
-                You have to understand the user's intent behind the question he/she asks.
-                Provide the best available results to the users related to their content of need only. Always behave in a very friendly manner with the user.'''),
+prompt = ChatPromptTemplate.from_messages([
+    (
+        "system",
+        '''You are a helpful assistant with a chill, friendly tone.
+        Always format your responses clearly using the following rules:
+        
+        - Use short paragraphs.
+        - Add line breaks between ideas.
+        - Use bullet points, numbering, or headings when listing things.
+        - Avoid long unformatted blocks of text.
+        - Keep the tone friendly and natural, not overly formal.
+        
+        Understand the user's intent and give the best possible response.'''
+    ),
     ("user", "Query:{questions}")
 ])
 
+
 #add routes for the LLMs
-# issue : have to add routes as per the model selected from frontend
 
 add_routes(
     app,

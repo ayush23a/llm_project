@@ -173,12 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrollToBottom();
             }
 
-            function simulateAssistantResponse(userInput) {
-                setTimeout(() => {
-                    const response = `Sorry to say that --> Backend not started!!!`;
-                    addMessageToCurrentSession('assistant', response);
-                }, 1000); 
-            }
 
             function scrollToBottom() {
                 chatArea.scrollTop = chatArea.scrollHeight;
@@ -252,15 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 createNewSession();
             });
 
-            chatForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const userInput = chatInput.value.trim();
-                if (userInput && currentSessionId) {
-                    addMessageToCurrentSession('user', userInput);
-                    chatInput.value = '';
-                    simulateAssistantResponse(userInput);
-                }
-            });
 
             profileIcon.addEventListener('click', function() {
                 closeAllMenus();
@@ -318,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     default:
                         // Fallback or error handling
                         console.error(`Unknown model selected: ${modelValue}`);
-                        return '/gemini-chat/invoke'; 
+                        return '/gemini_chat/invoke'; 
                 }
             }
             
@@ -328,7 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 try {
                     // Start simulation response immediately for a better UX
-                    const loadingMessageId = addLoadingMessage(); // Hypothetical function to show '...'
 
                     const response = await fetch(fullUrl, {
                         method: 'POST',
@@ -345,12 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     const jsonResponse = await response.json();
                     
-                    // The result from StrOutputParser in LangServe is typically under 'output'
                     const assistantContent = jsonResponse.output; 
-
-                    // Remove loading message and add actual message
-                    // (You would need to implement this logic)
-                    // removeMessageFromDOM(loadingMessageId); 
                     addMessageToCurrentSession('assistant', assistantContent);
 
                 } catch (error) {
@@ -367,15 +346,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (userInput && currentSessionId) {
                     addMessageToCurrentSession('user', userInput);
-
-                    // --- REPLACE simulateAssistantResponse with dynamic fetch ---
-                    // Log the selected model and user input 
                     console.log(`Selected Model: ${selectedModel}, User Input: ${userInput}`);
                     
                     chatInput.value = '';
-                    // Call the new async function
                     fetchAssistantResponse(userInput, selectedModel);
-                    // --------------------------------------------------------
                 }
             });
 
