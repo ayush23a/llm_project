@@ -65,7 +65,6 @@ prompt = ChatPromptTemplate.from_messages([
     ("user", "Query:{questions}")
 ])
 
-
 #add routes for the LLMs
 
 add_routes(
