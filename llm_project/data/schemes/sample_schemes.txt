@@ -1,0 +1,119 @@
+Pradhan Mantri Jan Dhan Yojana (PMJDY)
+
+Ministry: Ministry of Finance
+Category: Financial Inclusion
+
+Description:
+Pradhan Mantri Jan Dhan Yojana (PMJDY) is a national mission for financial inclusion to ensure access to financial services, namely, Banking/Savings & Deposit Accounts, Remittance, Credit, Insurance, Pension in an affordable manner.
+
+Eligibility Criteria:
+- Any Indian citizen above the age of 10 years can open an account.
+- No minimum balance required.
+- Valid KYC documents or self-certification is needed.
+- Minors above 10 years can also open accounts independently.
+
+Benefits:
+- Zero balance savings account with a RuPay debit card.
+- Accidental insurance cover of Rs 2 lakh.
+- Life insurance cover of Rs 30,000 for accounts opened before January 26, 2015.
+- Overdraft facility of Rs 10,000 per household.
+- Direct benefit transfer (DBT) of government schemes into the account.
+
+Documents Required:
+- Aadhaar Card or Aadhaar enrollment slip.
+- Voter ID, Driving License, PAN card, or Passport (any one).
+- NREGA job card.
+- Letter from Gazetted Officer with photograph.
+
+Application Process:
+1. Visit the nearest bank branch or Banking Correspondent (BC) outlet.
+2. Fill the account opening form.
+3. Submit the required KYC documents.
+4. Receive the RuPay debit card and passbook.
+
+Nearest Service Center:
+- Any nationalized bank branch, post office, or Common Service Centre (CSC).
+- Use the bank locator on the PMJDY official website: https://pmjdy.gov.in
+
+---
+
+Pradhan Mantri Awas Yojana (PMAY)
+
+Ministry: Ministry of Housing and Urban Affairs
+Category: Housing
+
+Description:
+Pradhan Mantri Awas Yojana aims to provide affordable housing to the urban and rural poor by 2024. The scheme provides financial assistance for construction or enhancement of houses.
+
+Eligibility Criteria:
+- EWS (Economically Weaker Section): Annual household income up to Rs 3 lakh.
+- LIG (Lower Income Group): Annual household income between Rs 3 lakh and Rs 6 lakh.
+- MIG-I: Annual household income between Rs 6 lakh and Rs 12 lakh.
+- MIG-II: Annual household income between Rs 12 lakh and Rs 18 lakh.
+- Beneficiary should not own a pucca house in any part of India.
+- Women ownership or co-ownership is mandatory for EWS and LIG categories.
+
+Benefits:
+- Interest subsidy of 6.5% on housing loans up to Rs 6 lakh for EWS/LIG for 20 years.
+- Interest subsidy of 4% on housing loans up to Rs 9 lakh for MIG-I.
+- Interest subsidy of 3% on housing loans up to Rs 12 lakh for MIG-II.
+- Direct financial assistance of Rs 1.5 lakh for house construction under BLC component.
+
+Documents Required:
+- Aadhaar Card (mandatory).
+- Income proof / Income certificate.
+- Property/land ownership documents.
+- Bank account details.
+- Caste certificate (if applicable).
+- Photographs.
+
+Application Process:
+1. Visit the official PMAY website: https://pmaymis.gov.in
+2. Click on "Citizen Assessment" and select the appropriate category.
+3. Enter Aadhaar number for verification.
+4. Fill in the application form with personal and income details.
+5. Submit the form and note the application ID for tracking.
+
+Nearest Service Center:
+- Urban Local Bodies (ULB) or Municipal Corporation offices.
+- Common Service Centres (CSCs).
+- Authorized housing finance companies and banks.
+
+---
+
+PM Kisan Samman Nidhi Yojana (PM-KISAN)
+
+Ministry: Ministry of Agriculture & Farmers Welfare
+Category: Agriculture
+
+Description:
+PM-KISAN is a Central Sector scheme that provides income support of Rs 6,000 per year to all landholding farmer families across the country in three equal installments of Rs 2,000 each every four months.
+
+Eligibility Criteria:
+- All landholding farmer families with cultivable land.
+- Institutional landholders are excluded.
+- Farmers holding constitutional posts, current/former MLAs, MPs, Ministers are excluded.
+- Income tax payers are excluded.
+- Professionals like doctors, engineers, lawyers, CAs earning more than Rs 10,000/month are excluded.
+
+Benefits:
+- Rs 6,000 per year in three installments of Rs 2,000 each.
+- Amount directly transferred to the bank account via DBT.
+
+Documents Required:
+- Aadhaar Card (mandatory).
+- Land ownership records.
+- Bank account details (linked with Aadhaar).
+- Mobile number.
+
+Application Process:
+1. Visit the PM-KISAN portal: https://pmkisan.gov.in
+2. Click on "New Farmer Registration."
+3. Enter Aadhaar number and select the state.
+4. Fill in the registration form with land and bank details.
+5. Submit and track the application status online.
+
+Nearest Service Center:
+- Agriculture department office at block/district level.
+- Common Service Centers (CSCs).
+- Lekhpal/Patwari offices for land record verification.

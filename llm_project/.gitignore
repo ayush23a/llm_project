@@ -1,0 +1,25 @@
+# Dependencies
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Environment
+.env
+
+# Vector DB storage
+vector_db/chroma_store/
+
+# Temp uploads
+temp_uploads/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+repomix-output.xml
+*.xml
